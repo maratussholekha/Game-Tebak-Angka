@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
+#define MINACAK 10
+#define MAXACAK 100
+
+using namespace std;
+
+int main()
+{
+srand(time(NULL));
+int jawaban = (rand()%(MAXACAK-MINACAK+1)) + MINACAK;
+
+cout << "SELAMAT DATANG DI GAME TEBAK ANGKA" << endl;
+cout << "==================================" << endl << endl;
+cout << "Masukan maksimal nilai : " << MINACAK << " sampai " << MAXACAK << endl << endl;
+
+cout << "Angka yang akan ditebak adalah " << jawaban << endl;
+
+int KESEMPATAN=3;
+int tebakan = KESEMPATAN;
+bool menang = false;
+int angka;
+
+do {
+    cout << "Masukkan tebakan anda: ";
+    cin >> angka;
+    tebakan--;
+
+    if (angka==jawaban) {
+        menang = true;
+        cout << "" << endl;
+    } else {
+        if (angka<jawaban) {
+            cout << "Tebakan anda terlalu kecil" << endl;
+        } else {
+            cout << "Tebakan anda terlalu besar" << endl;
+        }
+        cout << "Tebakan anda salah, nyawa : " << tebakan << endl;
+
+    }
+    cout << endl;
+
+} while ((tebakan>0) && (!menang));
+
+if (menang) {
+    cout << "Tebakan Anda benar." << endl;
+} else {
+    cout << "Game Over!" << endl;
+
+}
+
+    return 0;
+}
+
